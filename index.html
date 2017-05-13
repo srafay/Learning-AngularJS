@@ -8,11 +8,17 @@
   </head>
 
   <body>
-      <p ng-controller="greetings">
-          {{vars.hi}}
-          <br>
-          {{vars.question}}
-      </p>
+      <div ng-controller="Product">
+         <div ng-show="product.canPurchase" ng-repeat="product in products">
+              {{product.name}}
+              <br>
+              {{product.price}}
+              <br>
+              {{product.description}}
+              <br>
+              <button>Add to Cart</button>
+        </div>
+      </div>
   </body>
 
 </html>
