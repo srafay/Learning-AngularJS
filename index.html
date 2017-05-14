@@ -11,40 +11,30 @@
     <script src="app.js"></script>
   </head>
 
-  <body>
-      <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">AngularApp</a>
-    </div>
-    <ul ng-controller="panelSelecter as tab" class="nav navbar-nav">
-      <li class="{active : isSelected(1)}"><a href="#" ng-click="tab.selectTab(1)">Items List</a></li>
-      <li class="{active : isSelected(2)}"><a href="#" ng-click="tab.selectTab(2)">Reviews</a></li>
-      <li class="{active : isSelected(3)}"><a href="#" ng-click="tab.selectTab(3)">Contact</a></li>
-      <li class="{active : isSelected(4)}"><a href="#" ng-click="tab.selectTab(4)">Report a problem</a></li>
+  <body ng-controller="items">
 
-    </ul>
+    <div ng-controller="panelSelecter as panel" class="container">
+  <h3>Items</h3>
+  <ul class="nav nav-pills">
+      <li ng-class="{active : isSelected(1)}"><a href="#" ng-click="panel.selectTab(1)">Items List</a></li>
+      <li ng-class="{active : isSelected(2)}"><a href="#" ng-click="panel.selectTab(2)">Reviews</a></li>
+      <li ng-class="{active : isSelected(3)}"><a href="#" ng-click="panel.selectTab(3)">Contact</a></li>
+      <li ng-class="{active : isSelected(4)}"><a href="#" ng-click="panel.selectTab(4)">Report a problem</a></li
 
-    <div ng-controller="items" ng-show="tab.isSelected(1)" class="container">
-        <h2>Items</h2>
-        <ul ng-show="product.canPurchase" ng-repeat="product in products" class="list-group">
-          <li class="list-group-item">{{product.name}}</li>
+  </ul>
+<br>
+  <div ng-show="panel.isSelected(1)" class="list-group">
+     <div ng-show="product.canPurchase" ng-repeat="product in products" class="list-group">
+          <h3 class="list-group-item">{{product.name}}</h3>
           <li class="list-group-item">{{product.price}}</li>
           <li class="list-group-item">{{product.description}}</li>
-        </ul>
-      </div>
+          <button type="button" class="btn btn-success">Add to Cart</button>
+          <hr>
+    </div>
+</div>
 
-    <div ng-controller="items" ng-show="tab.isSelected(1)" class="list-group">
-       <div ng-show="product.canPurchase" ng-repeat="product in products" class="list-group">
-            <h3 class="list-group-item">{{product.name}}</h3>
-            <li class="list-group-item">{{product.price}}</li>
-            <li class="list-group-item">{{product.description}}</li>
-            <button type="button" class="btn btn-success">Add to Cart</button>
-            <hr>
-      </div>
-  </div>
-  </div>
-</nav>
+</div>
+
 
   </body>
 
