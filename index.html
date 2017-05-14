@@ -1,24 +1,51 @@
 <!DOCTYPE html>
-<html ng-app="store">
+<html ng-app="store" lang="en">
 
   <head>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
-    <link href="bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="app.js"></script>
   </head>
 
   <body>
-      <div ng-controller="Product">
-         <div ng-show="product.canPurchase" ng-repeat="product in products">
-              {{product.name}}
-              <br>
-              {{product.price}}
-              <br>
-              {{product.description}}
-              <br>
-              <button>Add to Cart</button>
-        </div>
+      <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">AngularApp</a>
+    </div>
+    <ul ng-controller="panelSelecter as tab" class="nav navbar-nav">
+      <li class="{active : isSelected(1)}"><a href="#" ng-click="tab.selectTab(1)">Items List</a></li>
+      <li class="{active : isSelected(2)}"><a href="#" ng-click="tab.selectTab(2)">Reviews</a></li>
+      <li class="{active : isSelected(3)}"><a href="#" ng-click="tab.selectTab(3)">Contact</a></li>
+      <li class="{active : isSelected(4)}"><a href="#" ng-click="tab.selectTab(4)">Report a problem</a></li>
+
+    </ul>
+
+    <div ng-controller="items" ng-show="tab.isSelected(1)" class="container">
+        <h2>Items</h2>
+        <ul ng-show="product.canPurchase" ng-repeat="product in products" class="list-group">
+          <li class="list-group-item">{{product.name}}</li>
+          <li class="list-group-item">{{product.price}}</li>
+          <li class="list-group-item">{{product.description}}</li>
+        </ul>
       </div>
+
+    <div ng-controller="items" ng-show="tab.isSelected(1)" class="list-group">
+       <div ng-show="product.canPurchase" ng-repeat="product in products" class="list-group">
+            <h3 class="list-group-item">{{product.name}}</h3>
+            <li class="list-group-item">{{product.price}}</li>
+            <li class="list-group-item">{{product.description}}</li>
+            <button type="button" class="btn btn-success">Add to Cart</button>
+            <hr>
+      </div>
+  </div>
+  </div>
+</nav>
+
   </body>
 
 </html>
