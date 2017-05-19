@@ -34,31 +34,35 @@
 </div>
 
 
-    <div ng-show="panel.isSelected(2)">
-        <blockquote>
-            <p>{{review.name}}</p>
-            <p>{{review.details}}</p>
-            <p>{{review.stars}}</p>
+    <div ng-show="panel.isSelected(2)" ng-controller="ReviewController as reviewCtrl">
+        <blockquote ng-repeat="product in products">
+            <div ng-repeat="review in product.reviews">
+                <p>{{reviewCtrl.review.name}}</p>
+                <p>{{reviewCtrl.review.details}}</p>
+                <p>{{reviewCtrl.review.stars}}</p>
+            </div>
 <br>
-            <form>
-                <p>Please write your review here</p>
-                <p>Your Name
-                    <input type="text" ng-model="review.name"/>
-                </p>
-                <p>Review :</p>
-                <textarea ng-model="review.details"></textarea>
-                <br>
-                <p>Stars</p>
-                <select ng-model="review.stars" name="stars">
-                    <option value="5" selected="selected">5</option>
-                    <option value="4">4</option>
-                    <option value="3">3</option>
-                    <option value="2">2</option>
-                    <option value="1">1</option>
-                </select>
 
-            </form>
         </blockquote>
+
+        <form name="reviewForm" ng-submit="reviewCtrl.addReview(product)">
+            <p>Please write your review here</p>
+            <p>Your Name : {{reviewCtrl.review.name}}
+                <input type="text" ng-model="reviewCtrl.review.name"/>
+            </p>
+            <p>Review : {{reviewCtrl.review.details}}</p>
+            <textarea ng-model="reviewCtrl.review.details"></textarea>
+            <br>
+            <p>Stars : {{reviewCtrl.review.stars}}</p>
+            <select ng-model="reviewCtrl.review.stars" name="stars">
+                <option value="5" selected="selected">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+            </select>
+            <input type="submit" value="Submit" />
+        </form>
     </div>
 
 </div>

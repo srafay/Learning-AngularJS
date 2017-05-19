@@ -17,12 +17,26 @@ appname.controller('items',['$scope',
             {name : "Diamond2",
             price : 50,
             description : "Pure black diamond",
-            canPurchase : true},
+            canPurchase : true,
+            reviews: [
+                {
+                name:"Riki",
+                details:"Nice product",
+                stars:5}
+            ]
+            },
 
             {name : "Diamond3",
             price : 100000,
             description : "Nihilistic diamond",
-            canPurchase : false},
+            canPurchase : false,
+            reviews: [
+                {
+                name:"Riki",
+                details:"Nice product",
+                stars:5}
+            ]
+            },
             ];
 }]);
 
@@ -38,4 +52,13 @@ appname.controller('panelSelecter', function(){
         };
 
 });
+
+appname.controller('ReviewController', function(){
+    this.review={};
+    this.addReview = function(product){
+        product.reviews.push(this.review);
+
+    };
+});
+
 console.log("hahaha");
