@@ -5,7 +5,14 @@ appname.controller('items',['$scope',
             {name : "Diamond1",
             price : 45,
             description : "Pure white diamond",
-            canPurchase : true},
+            canPurchase : true,
+            reviews: [
+                {
+                name:"Riki",
+                details:"Nice product",
+                stars:5}
+            ]
+            },
 
             {name : "Diamond2",
             price : 50,

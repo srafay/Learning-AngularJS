@@ -33,9 +33,33 @@
     </div>
 </div>
 
-<div ng-show="panel.isSelected(2)">
-    <blockquote><h4>No reviews yet</h4></blockquote>
-</div>
+
+    <div ng-show="panel.isSelected(2)">
+        <blockquote>
+            <p>{{review.name}}</p>
+            <p>{{review.details}}</p>
+            <p>{{review.stars}}</p>
+<br>
+            <form>
+                <p>Please write your review here</p>
+                <p>Your Name
+                    <input type="text" ng-model="review.name"/>
+                </p>
+                <p>Review :</p>
+                <textarea ng-model="review.details"></textarea>
+                <br>
+                <p>Stars</p>
+                <select ng-model="review.stars" name="stars">
+                    <option value="5" selected="selected">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                </select>
+
+            </form>
+        </blockquote>
+    </div>
 
 </div>
 
