@@ -11,7 +11,7 @@
     <script src="app.js"></script>
   </head>
 
-  <body ng-controller="items">
+  <body ng-controller="items as a">
 
     <div ng-controller="panelSelecter as panel" class="container">
   <h3>Items</h3>
@@ -24,7 +24,7 @@
   </ul>
 
   <div ng-show="panel.isSelected(1)" class="list-group">
-     <div ng-show="product.canPurchase" ng-repeat="product in products" class="list-group">
+     <div ng-show="product.canPurchase" ng-repeat="product in a.products" class="list-group">
           <h3 class="list-group-item">{{product.name}}</h3>
           <li class="list-group-item">{{product.price}}</li>
           <li class="list-group-item">{{product.description}}</li>
@@ -34,35 +34,43 @@
 </div>
 
 
-    <div ng-show="panel.isSelected(2)" ng-controller="ReviewController as reviewCtrl">
-        <blockquote ng-repeat="product in products">
+    <div ng-show="panel.isSelected(2)">
+        <blockquote ng-repeat="product in a.products">
             <div ng-repeat="review in product.reviews">
-                <p>{{reviewCtrl.review.name}}</p>
-                <p>{{reviewCtrl.review.details}}</p>
-                <p>{{reviewCtrl.review.stars}}</p>
+                <p>{{review.name}}</p>
+                <p>{{review.details}}</p>
+                <p>{{review.stars}}</p>
             </div>
 <br>
 
         </blockquote>
 
-        <form name="reviewForm" ng-submit="reviewCtrl.addReview(product)">
-            <p>Please write your review here</p>
-            <p>Your Name : {{reviewCtrl.review.name}}
-                <input type="text" ng-model="reviewCtrl.review.name"/>
-            </p>
-            <p>Review : {{reviewCtrl.review.details}}</p>
-            <textarea ng-model="reviewCtrl.review.details"></textarea>
-            <br>
-            <p>Stars : {{reviewCtrl.review.stars}}</p>
-            <select ng-model="reviewCtrl.review.stars" name="stars">
-                <option value="5" selected="selected">5</option>
-                <option value="4">4</option>
-                <option value="3">3</option>
-                <option value="2">2</option>
-                <option value="1">1</option>
-            </select>
-            <input type="submit" value="Submit" />
-        </form>
+        <div ng-controller="ReviewController as reviewCtrl">
+            <blockquote>
+                    <p>{{reviewCtrl.review.name}}</p>
+                    <p>{{reviewCtrl.review.details}}</p>
+                    <p>{{reviewCtrl.review.stars}}</p>
+            </blockquote>
+
+            <form name="reviewForm" ng-submit="reviewCtrl.addReview(a.products)">
+                <p>Please write your review here</p>
+                <p>Your Name :
+                    <input type="text" ng-model="reviewCtrl.review.name"/>
+                </p>
+                <p>Review : </p>
+                <textarea ng-model="reviewCtrl.review.details"></textarea>
+                <br>
+                <p>Stars : </p>
+                <select ng-model="reviewCtrl.review.stars" name="stars">
+                    <option value="5" selected="selected">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                </select>
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
     </div>
 
 </div>

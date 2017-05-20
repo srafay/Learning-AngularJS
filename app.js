@@ -1,7 +1,6 @@
 var appname = angular.module('store', []);
-appname.controller('items',['$scope',
-    function($scope){
-        $scope.products = [
+appname.controller('items',function(){
+        this.products = [
             {name : "Diamond1",
             price : 45,
             description : "Pure white diamond",
@@ -20,9 +19,9 @@ appname.controller('items',['$scope',
             canPurchase : true,
             reviews: [
                 {
-                name:"Riki",
-                details:"Nice product",
-                stars:5}
+                name:"Alchemist",
+                details:"Diamond2 was shiny",
+                stars:4}
             ]
             },
 
@@ -32,13 +31,13 @@ appname.controller('items',['$scope',
             canPurchase : false,
             reviews: [
                 {
-                name:"Riki",
-                details:"Nice product",
-                stars:5}
+                name:"Anti-Mage",
+                details:"Need more blinking product",
+                stars:2}
             ]
             },
             ];
-}]);
+});
 
 appname.controller('panelSelecter', function(){
         this.tab = 1;
@@ -56,7 +55,10 @@ appname.controller('panelSelecter', function(){
 appname.controller('ReviewController', function(){
     this.review={};
     this.addReview = function(product){
-        product.reviews.push(this.review);
+        console.log("addReview() called");
+        console.log(product[0].reviews);
+        product[0].reviews.push(this.review);
+        this.review={};
 
     };
 });
