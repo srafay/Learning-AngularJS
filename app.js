@@ -66,4 +66,18 @@ appname.controller('ReviewController', function(){
     };
 });
 
+appname.directive('formProperties', function(){
+    return {
+        restrict: 'A',
+        templateUrl: 'form-properties.html'
+    };
+});
+
+appname.directive('reviewForm', function(){
+    return {
+        restrict: 'E',
+        templateUrl: 'review-form.html'
+    };
+});
+
 console.log("hahaha");
