@@ -55,17 +55,6 @@ appname.controller('panelSelecter', function(){
 
 });
 
-appname.controller('ReviewController', function(){
-    this.review={};
-    this.addReview = function(product){
-        console.log("addReview() called");
-        console.log(product[0].reviews);
-        product[0].reviews.push(this.review);
-        this.review={};
-
-    };
-});
-
 appname.directive('formProperties', function(){
     return {
         restrict: 'A',
@@ -77,6 +66,24 @@ appname.directive('reviewForm', function(){
     return {
         restrict: 'E',
         templateUrl: 'review-form.html'
+    };
+});
+
+appname.directive('liveReviewFormPreview', function(){
+    return {
+        restrict: 'E',
+        templateUrl: 'live-review-form-preview.html',
+        controller: function(){
+            this.review={};
+            this.addReview = function(product){
+                console.log("addReview() called");
+                console.log(product[0].reviews);
+                product[0].reviews.push(this.review);
+                this.review={};
+
+            };
+        },
+        controllerAs: 'reviewCtrl'
     };
 });
 

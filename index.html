@@ -47,19 +47,14 @@
 
         </blockquote>
 
-        <div ng-controller="ReviewController as reviewCtrl">
-            <blockquote>
-                    <p>{{reviewCtrl.review.name}}</p>
-                    <p>{{reviewCtrl.review.email}}</p>
-                    <p>{{reviewCtrl.review.details}}</p>
-                    <p>{{reviewCtrl.review.stars}}</p>
-            </blockquote>
+        <live-review-form-preview>
+        </live-review-form-preview>
 
             <form name="reviewForm" ng-submit="reviewForm.$valid && reviewCtrl.addReview(a.products)" novalidate>
                 <review-form></review-form>
             </form>
 
-        </div>
+
     </div>
 
 </div>
