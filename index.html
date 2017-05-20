@@ -55,7 +55,7 @@
                     <p>{{reviewCtrl.review.stars}}</p>
             </blockquote>
 
-            <form form-properties>
+            <form name="reviewForm" ng-submit="reviewForm.$valid && reviewCtrl.addReview(a.products)" novalidate>
                 <review-form></review-form>
             </form>
 
