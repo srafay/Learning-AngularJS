@@ -15,14 +15,8 @@
   <body ng-controller="items as a">
 
     <div ng-controller="panelSelecter as panel" class="container">
-  <h3>Items</h3>
-  <ul class="nav nav-pills">
-      <li ng-class="{active : panel.isSelected(1)}"><a href="#" ng-click="panel.selectTab(1)">Items List</a></li>
-      <li ng-class="{active : panel.isSelected(2)}"><a href="#" ng-click="panel.selectTab(2)">Reviews</a></li>
-      <li ng-class="{active : panel.isSelected(3)}"><a href="#" ng-click="panel.selectTab(3)">Contact</a></li>
-      <li ng-class="{active : panel.isSelected(4)}"><a href="#" ng-click="panel.selectTab(4)">Report a problem</a></li
-<br>
-  </ul>
+
+        <nav-bar></nav-bar>
 
   <div ng-show="panel.isSelected(1)" class="list-group">
      <div ng-show="product.canPurchase" ng-repeat="product in a.products" class="list-group">

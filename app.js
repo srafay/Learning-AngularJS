@@ -87,4 +87,11 @@ appname.directive('liveReviewFormPreview', function(){
     };
 });
 
+appname.directive('navBar', function(){
+    return {
+        restrict: 'E',
+        templateUrl: 'nav-bar.html'
+    };
+});
+
 console.log("hahaha");
