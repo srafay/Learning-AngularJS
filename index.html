@@ -38,6 +38,7 @@
         <blockquote ng-repeat="product in a.products">
             <div ng-repeat="review in product.reviews">
                 <p>{{review.name}}</p>
+                <p>{{review.email}}</p>
                 <p>{{review.details}}</p>
                 <p>{{review.stars}}</p>
             </div>
@@ -48,26 +49,31 @@
         <div ng-controller="ReviewController as reviewCtrl">
             <blockquote>
                     <p>{{reviewCtrl.review.name}}</p>
+                    <p>{{reviewCtrl.review.email}}</p>
                     <p>{{reviewCtrl.review.details}}</p>
                     <p>{{reviewCtrl.review.stars}}</p>
             </blockquote>
 
-            <form name="reviewForm" ng-submit="reviewCtrl.addReview(a.products)">
+            <form name="reviewForm" ng-submit="reviewForm.$valid && reviewCtrl.addReview(a.products)" novalidate>
                 <p>Please write your review here</p>
                 <p>Your Name :
-                    <input type="text" ng-model="reviewCtrl.review.name"/>
+                    <input type="text" ng-model="reviewCtrl.review.name" required/>
+                </p>
+                <p>Email address :
+                    <input type="email" ng-model="reviewCtrl.review.email" required/>
                 </p>
                 <p>Review : </p>
-                <textarea ng-model="reviewCtrl.review.details"></textarea>
+                <textarea ng-model="reviewCtrl.review.details" required></textarea>
                 <br>
                 <p>Stars : </p>
-                <select ng-model="reviewCtrl.review.stars" name="stars">
-                    <option value="5" selected="selected">5</option>
+                <select ng-model="reviewCtrl.review.stars" name="stars" required>
+                    <option selected="selected" value="5">5</option>
                     <option value="4">4</option>
                     <option value="3">3</option>
                     <option value="2">2</option>
                     <option value="1">1</option>
                 </select>
+                <div>Review form is {{reviewForm.$valid}}</div>
                 <input type="submit" value="Submit" />
             </form>
         </div>

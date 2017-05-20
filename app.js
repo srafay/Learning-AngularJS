@@ -8,6 +8,7 @@ appname.controller('items',function(){
             reviews: [
                 {
                 name:"Riki",
+                email:"riki@dota2.com",
                 details:"Nice product",
                 stars:5}
             ]
@@ -20,6 +21,7 @@ appname.controller('items',function(){
             reviews: [
                 {
                 name:"Alchemist",
+                email:"Alc@dota2.com",
                 details:"Diamond2 was shiny",
                 stars:4}
             ]
@@ -32,6 +34,7 @@ appname.controller('items',function(){
             reviews: [
                 {
                 name:"Anti-Mage",
+                email:"am@dota2.com",
                 details:"Need more blinking product",
                 stars:2}
             ]
